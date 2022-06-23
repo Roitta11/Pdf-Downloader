@@ -11,7 +11,6 @@ Plan for the project:
 
 '''
 
-
 import os
 import requests
 from urllib.parse import urljoin
@@ -23,8 +22,9 @@ source = "https://papers.gceguide.com/A%20Levels/Computing%20(9691)/"
 # Use the current directory as the folder for downloading the files
 folder_location = os.getcwd()
 
-# folder_path = os.chdir('/Users/rajarshisinha/Desktop/')
-# folder_location = os.makedirs('Summer Past Papers')
+# Create two separate folder for storing the files
+os.makedirs ("summer_files")
+os.makedirs ("winter_files")
 
 # Get the response and create a Beautiful soup object
 response = requests.get(source)
@@ -38,14 +38,26 @@ link_text=list()
 counter = 0
 
 for link in pdf_link:
+    pdf_name = link['href'].split('/')[-1]
+
+# Checking to separate the winter files from the summer files
+    if "s" in pdf_name:
+        filename = os.path.join(folder_location + "/summer_files/",link['href'].split('/')[-1])
+    else:
+        filename = os.path.join(folder_location + "/winter_files/",link['href'].split('/')[-1])
     
-    filename = os.path.join(folder_location,link['href'].split('/')[-1])
+
     with open(filename, 'wb') as file:
+        # Downloading the files
         file.write(requests.get(urljoin(source,link['href'])).content)
         
     link_text.append(str(link.text))
  
     counter += 1
+
+# The extreme limit for downloading all the files
+    if counter == 700:
+        break
 
     print(counter, "Downloading file named ",link['href'].split('/')[-1])
 
