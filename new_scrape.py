@@ -35,6 +35,7 @@ pdf_link = soup.select("a[href$='.pdf']")
 
 link_text=list()
 
+# Keep a counter for the number of files 
 counter = 0
 
 for link in pdf_link:
