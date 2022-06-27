@@ -19,12 +19,35 @@ from bs4 import BeautifulSoup
 # The link from where the files are to be downloaded
 source = "https://papers.gceguide.com/A%20Levels/Computing%20(9691)/"
 
+# source = "https://papers.gceguide.com/O%20Levels/Bengali%20(3204)/"
+
 # Use the current directory as the folder for downloading the files
 folder_location = os.getcwd()
 
 # Create two separate folder for storing the files
-os.makedirs ("summer_files")
-os.makedirs ("winter_files")
+os.makedirs ("2003")
+os.makedirs ("2004")
+os.makedirs ("2005")
+os.makedirs ("2006")
+os.makedirs ("2007")
+os.makedirs ("2008")
+os.makedirs ("2009")
+os.makedirs ("2010")
+os.makedirs ("2011")
+os.makedirs ("2012")
+os.makedirs ("2013")
+os.makedirs ("2014")
+os.makedirs ("2015")
+os.makedirs ("2016")
+os.makedirs ("2017")
+os.makedirs ("2018")
+os.makedirs ("2019")
+os.makedirs ("2020")
+os.makedirs ("2021")
+
+# for i in range(2003, 2022):
+#     os.makedirs(i)
+
 
 # Get the response and create a Beautiful soup object
 response = requests.get(source)
@@ -42,12 +65,48 @@ for link in pdf_link:
     pdf_name = link['href'].split('/')[-1]
 
 # Checking to separate the winter files from the summer files
-    if "s" in pdf_name:
-        filename = os.path.join(folder_location + "/summer_files/",link['href'].split('/')[-1])
+    if "3" in pdf_name:
+        filename = os.path.join(folder_location + "/2003/",link['href'].split('/')[-1])
+    elif "4" in pdf_name:
+        filename = os.path.join(folder_location + "/2004/",link['href'].split('/')[-1])
+    elif "5" in pdf_name:
+        filename = os.path.join(folder_location + "/2005/",link['href'].split('/')[-1])
+    elif "6" in pdf_name:
+        filename = os.path.join(folder_location + "/2006/",link['href'].split('/')[-1])
+    elif "7" in pdf_name:
+        filename = os.path.join(folder_location + "/2007/",link['href'].split('/')[-1])
+    elif "8" in pdf_name:
+        filename = os.path.join(folder_location + "/2008/",link['href'].split('/')[-1])
+    elif "9" in pdf_name:
+        filename = os.path.join(folder_location + "/2009/",link['href'].split('/')[-1])
+    elif "10" in pdf_name:
+        filename = os.path.join(folder_location + "/2010/",link['href'].split('/')[-1])
+    elif "11" in pdf_name:
+        filename = os.path.join(folder_location + "/2011/",link['href'].split('/')[-1])
+    elif "12" in pdf_name:
+        filename = os.path.join(folder_location + "/2012/",link['href'].split('/')[-1])
+    elif "13" in pdf_name:
+        filename = os.path.join(folder_location + "/2013/",link['href'].split('/')[-1])
+    elif "14" in pdf_name:
+        filename = os.path.join(folder_location + "/2014/",link['href'].split('/')[-1])
+    elif "15" in pdf_name:
+        filename = os.path.join(folder_location + "/2015/",link['href'].split('/')[-1])
+    elif "16" in pdf_name:
+        filename = os.path.join(folder_location + "/2016/",link['href'].split('/')[-1])
+    elif "17" in pdf_name:
+        filename = os.path.join(folder_location + "/2017/",link['href'].split('/')[-1])
+    elif "18" in pdf_name:
+        filename = os.path.join(folder_location + "/2018/",link['href'].split('/')[-1])
+    elif "19" in pdf_name:
+        filename = os.path.join(folder_location + "/2019/",link['href'].split('/')[-1])
+    elif "20" in pdf_name:
+        filename = os.path.join(folder_location + "/2020/",link['href'].split('/')[-1])
+    elif "21" in pdf_name:
+        filename = os.path.join(folder_location + "/2021/",link['href'].split('/')[-1])
     else:
-        filename = os.path.join(folder_location + "/winter_files/",link['href'].split('/')[-1])
+        filename = os.path.join(folder_location + "/2022/",link['href'].split('/')[-1])
     
-
+    
     with open(filename, 'wb') as file:
         # Downloading the files
         file.write(requests.get(urljoin(source,link['href'])).content)
