@@ -24,29 +24,9 @@ source = "https://papers.gceguide.com/A%20Levels/Computing%20(9691)/"
 # Use the current directory as the folder for downloading the files
 folder_location = os.getcwd()
 
-# Create two separate folder for storing the files
-os.makedirs ("2003")
-os.makedirs ("2004")
-os.makedirs ("2005")
-os.makedirs ("2006")
-os.makedirs ("2007")
-os.makedirs ("2008")
-os.makedirs ("2009")
-os.makedirs ("2010")
-os.makedirs ("2011")
-os.makedirs ("2012")
-os.makedirs ("2013")
-os.makedirs ("2014")
-os.makedirs ("2015")
-os.makedirs ("2016")
-os.makedirs ("2017")
-os.makedirs ("2018")
-os.makedirs ("2019")
-os.makedirs ("2020")
-os.makedirs ("2021")
-
-# for i in range(2003, 2022):
-#     os.makedirs(i)
+# Create folders for storing the files
+for i in range(2003, 2022):
+    os.makedirs(folder_location + f"/{i}")
 
 
 # Get the response and create a Beautiful soup object
